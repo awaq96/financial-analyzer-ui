@@ -5,24 +5,24 @@ function App() {
   const [analysis, setAnalysis] = useState(null);
   const [loading, setLoading] = useState(false);
 
-function LoadingSpinner() {
+  function LoadingSpinner() {
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center h-screen w-full">
         <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100">
-    {loading ? (
-      <LoadingSpinner />
-    ) : !analysis ? (
-      <div className="flex items-center justify-center h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+      {loading ? (
+        <LoadingSpinner />
+      ) : !analysis ? (
+      <div className="flex items-center justify-center w-full min-h-screen p-4">
         <FileUpload onAnalyzeComplete={setAnalysis} setLoading={setLoading} />
       </div>
-    ) : (
-      <div className="flex items-center justify-center min-h-screen p-4 transition duration-700 ease-in-out transform animate-fade-in">
+      ) : (
+        <div className="flex items-center justify-center min-h-screen p-4 animate-slide-in">
           <div className="bg-white rounded-lg shadow-lg p-8 max-w-3xl w-full">
             <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
               💡 Monthly Spending Analysis
