@@ -1,18 +1,50 @@
 import { useState } from "react";
 import FileUpload from "./components/FileUpload";
+import "./spinner.css"; // Make sure this is imported if you extract styles
+
 
 function App() {
   const [analysis, setAnalysis] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  function LoadingSpinner() {
-    return (
-      <div className="flex items-center justify-center h-screen w-full">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
+function LoadingSpinner() {
+  return (
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh'
+    }}>
+      <div
+        style={{
+          width: '32px',
+          height: '32px',
+          border: '8px solid white',            // outer ring color
+          borderTop: '8px solid transparent',       // top is invisible
+          borderRadius: '50%',                      // makes it a circle
+          animation: 'spin 1s linear infinite',
+        }}
+        role="status"
+      >
+        <span style={{
+          position: 'absolute',
+          width: '1px',
+          height: '1px',
+          padding: 0,
+          margin: '-1px',
+          overflow: 'hidden',
+          clip: 'rect(0, 0, 0, 0)',
+          whiteSpace: 'nowrap',
+          border: 0,
+        }}>
+          Loading...
+        </span>
       </div>
-    );
-  }
-
+    </div>
+  );
+}
+  
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
       {loading ? (

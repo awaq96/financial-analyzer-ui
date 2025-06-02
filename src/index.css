@@ -2,20 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Full height for flex layouts */
-html,
-body,
-#root {
+html, body, #root {
   height: 100%;
 }
 
-/* Safe, raw CSS instead of @apply */
-body {
-  margin: 0;
-  background-color: #0f0f0f;  /* true black or try #111827 for Tailwind gray-900 */
-  color: #f9fafb;             /* near-white for visibility */
-  font-family: system-ui, sans-serif;
+/* Optional: global styles (avoid @apply here unless inside a class) */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
