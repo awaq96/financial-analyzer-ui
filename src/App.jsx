@@ -1,115 +1,28 @@
 import { useState } from "react";
 import FileUpload from "./components/FileUpload";
 import "./spinner.css"; // Make sure this is imported if you extract styles
+import ResultPage from "./pages/ResultPage";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 
 function App() {
   const [analysis, setAnalysis] = useState(null);
   const [loading, setLoading] = useState(false);
-
-function LoadingSpinner() {
-  return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh'
-    }}>
-      <div
-        style={{
-          width: '32px',
-          height: '32px',
-          border: '8px solid white',            // outer ring color
-          borderTop: '8px solid transparent',       // top is invisible
-          borderRadius: '50%',                      // makes it a circle
-          animation: 'spin 1s linear infinite',
-        }}
-        role="status"
-      >
-        <span style={{
-          position: 'absolute',
-          width: '1px',
-          height: '1px',
-          padding: 0,
-          margin: '-1px',
-          overflow: 'hidden',
-          clip: 'rect(0, 0, 0, 0)',
-          whiteSpace: 'nowrap',
-          border: 0,
-        }}>
-          Loading...
-        </span>
-      </div>
-    </div>
-  );
-}
   
-  
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-      {loading ? (
-        <LoadingSpinner />
-      ) : !analysis ? (
+return (
+  <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+    {loading ? (
+      <LoadingSpinner />
+    ) : !analysis ? (
       <div className="flex items-center justify-center w-full min-h-screen p-4">
         <FileUpload onAnalyzeComplete={setAnalysis} setLoading={setLoading} />
       </div>
-      ) : (
-        <div className="flex items-center justify-center min-h-screen p-4 animate-slide-in">
-          <div className="bg-white rounded-lg shadow-lg p-8 max-w-3xl w-full">
-            <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
-              💡 Monthly Spending Analysis
-            </h2>
+    ) : (
+      <ResultPage analysis={analysis} onReset={() => setAnalysis(null)} />
+    )}
+  </div>
+);
 
-            {/* Summary */}
-            <div className="mb-6 text-lg text-gray-700 bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
-              {analysis.summary}
-            </div>
-
-            {/* Top Categories */}
-            <h3 className="text-xl font-bold mb-2 text-gray-800">📊 Top Spending Categories</h3>
-            <ul className="mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {analysis.top_spending_categories.map((item, index) => (
-                <li key={index} className="bg-gray-100 p-4 rounded shadow-sm">
-                  <p className="font-medium text-gray-700">{item.category}</p>
-                  <p className="text-blue-600 font-semibold">${item.amount.toFixed(2)}</p>
-                </li>
-              ))}
-            </ul>
-
-            {/* Recommendations */}
-            <h3 className="text-xl font-bold mb-2 text-gray-800">✅ Recommendations</h3>
-            <ul className="mb-6 list-disc pl-6 text-gray-700">
-              {analysis.recommendations.map((rec, index) => (
-                <li key={index}>{rec}</li>
-              ))}
-            </ul>
-
-            {/* Warnings */}
-            {analysis.warnings && analysis.warnings.length > 0 && (
-              <>
-                <h3 className="text-xl font-bold mb-2 text-gray-800 text-red-600">⚠️ Warnings</h3>
-                <ul className="list-disc pl-6 text-red-700 mb-6">
-                  {analysis.warnings.map((warn, index) => (
-                    <li key={index}>{warn}</li>
-                  ))}
-                </ul>
-              </>
-            )}
-
-            {/* Reset */}
-            <div className="mt-6 flex justify-center">
-              <button
-                onClick={() => setAnalysis(null)}
-                className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition"
-              >
-                Upload Another File
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
 }
 
 export default App;
