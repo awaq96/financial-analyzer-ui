@@ -2,6 +2,8 @@
 
 AI-powered credit card spending analyzer. Upload a CSV of your transactions and get a personalized breakdown of spending categories, recommendations, and warnings — powered by Claude, OpenAI, or Gemini.
 
+![Demo](assets/demo.gif)
+
 ## Repos
 
 | Repo | Description |
