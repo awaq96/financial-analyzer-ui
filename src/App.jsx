@@ -54,12 +54,15 @@ function AnalysisResults({ analysis, onReset }) {
       {/* Sticky header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <button
+            onClick={onReset}
+            className="flex items-center gap-2 hover:opacity-75 transition-opacity"
+          >
             <div className="w-7 h-7 bg-indigo-600 rounded-lg flex items-center justify-center">
               <Icon path={ICONS.barChart} className="w-4 h-4 text-white" />
             </div>
             <span className="font-bold text-slate-900 tracking-tight">FinanceIQ</span>
-          </div>
+          </button>
           <button
             onClick={onReset}
             className="flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 transition-colors px-3 py-1.5 rounded-lg"

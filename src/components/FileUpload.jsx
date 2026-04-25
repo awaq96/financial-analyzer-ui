@@ -39,14 +39,21 @@ export default function FileUpload({ onAnalyzeComplete, setLoading }) {
 
   const handleUpload = async () => {
     if (!file) return;
+
     const formData = new FormData();
     formData.append("file", file);
+
     setLoading(true);
+
     try {
       const response = await axios.post("http://localhost:8000/api/v1/upload/", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      onAnalyzeComplete(response.data.analysis);
+
+      setTimeout(() => {
+        onAnalyzeComplete(response.data.analysis);
+        setLoading(false);
+      }, 400);
     } catch (error) {
       console.error("Upload failed:", error);
       alert("Upload failed. Check the console for details.");
