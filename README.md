@@ -8,7 +8,7 @@ AI-powered credit card spending analyzer. Upload a CSV of your transactions and 
 
 | Repo | Description |
 |------|-------------|
-| `financial-analyzer-ui-vitae` (this) | React + Vite frontend — file upload and results dashboard |
+| `financial-analyzer-ui` (this) | React + Vite frontend — file upload and results dashboard |
 | `Financials.AI` | FastAPI backend — parses CSV, calls LLM, returns JSON |
 
 ## Setup

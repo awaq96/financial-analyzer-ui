@@ -10,7 +10,7 @@ A two-repo full-stack app: this repo is the **React frontend**, and the backend 
 
 | Repo | Path |
 |------|------|
-| Frontend (this) | `financial-analyzer-ui-vitae/` |
+| Frontend (this) | `financial-analyzer-ui/` |
 | Backend | `../Financials.AI/` |
 
 ---

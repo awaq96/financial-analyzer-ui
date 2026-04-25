@@ -10,8 +10,8 @@ Open an [issue](../../issues) before writing code. This avoids duplicate work an
 
 **Frontend**
 ```bash
-git clone https://github.com/<your-fork>/financial-analyzer-ui-vitae.git
-cd financial-analyzer-ui-vitae
+git clone https://github.com/<your-fork>/financial-analyzer-ui.git
+cd financial-analyzer-ui
 npm install
 npm run dev
 ```
