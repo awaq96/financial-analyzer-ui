@@ -56,9 +56,8 @@ export default function FileUpload({ onAnalyzeComplete, setLoading }) {
       }, 400);
     } catch (error) {
       console.error("Upload failed:", error);
-      alert("Upload failed. Check the console for details.");
-    } finally {
       setLoading(false);
+      alert("Upload failed. Check the console for details.");
     }
   };
 
